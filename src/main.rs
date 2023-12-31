@@ -44,6 +44,6 @@ fn create_image_slices(
     Ok(())
 }
 
-fn average_image_slice(slice: &Vec<Rgba<u8>>) -> Rgba<u8> {
+fn average_image_slice(slice: &[Rgba<u8>]) -> Rgba<u8> {
     todo!()
 }
