@@ -8,8 +8,8 @@ pub enum SliceType {
 
 #[derive(Debug)]
 pub struct AverageSlice {
-    colour: Rgba<u8>,
-    bounds: ((u32, u32), (u32, u32)),
+    pub colour: Rgba<u8>,
+    pub bounds: (u32, u32, u32, u32),
 }
 
 pub fn slice_image(
@@ -54,11 +54,10 @@ pub fn dominant_colour(slice: SubImage<&DynamicImage>) -> AverageSlice {
         slice_length += 1;
     }
     let bounds = (
-        (slice.bounds().0, slice.bounds().1),
-        (
-            slice.bounds().0 + slice.bounds().2,
-            slice.bounds().1 + slice.bounds().3,
-        ),
+        slice.bounds().0,
+        slice.bounds().1,
+        slice.bounds().2,
+        slice.bounds().3,
     );
     AverageSlice {
         colour: Rgba::<u8>::from([
