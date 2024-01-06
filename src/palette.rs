@@ -1,5 +1,6 @@
 use image::{DynamicImage, GenericImageView, Rgba, SubImage};
 
+#[allow(unused)]
 #[derive(Debug, PartialEq, Eq)]
 pub enum SliceType {
     Horizontal,
@@ -25,12 +26,11 @@ pub fn slice_image(
         match slice_type {
             SliceType::Vertical => {
                 let size = dimensions.0 / num_sections as u32;
-                println!("{}", dimensions.1);
                 image_slices.push(img.view(i as u32 * size, 0, size, dimensions.1));
             }
             SliceType::Horizontal => {
                 let size = dimensions.1 / num_sections as u32;
-                image_slices.push(img.view(0, i as u32 * size, size, dimensions.0));
+                image_slices.push(img.view(0, i as u32 * size, dimensions.0, size));
             }
         };
     }
@@ -56,8 +56,8 @@ pub fn dominant_colour(slice: SubImage<&DynamicImage>) -> AverageSlice {
     let bounds = (
         slice.bounds().0,
         slice.bounds().1,
-        slice.bounds().2,
-        slice.bounds().3,
+        slice.bounds().0 + slice.bounds().2,
+        slice.bounds().1 + slice.bounds().3,
     );
     AverageSlice {
         colour: Rgba::<u8>::from([
