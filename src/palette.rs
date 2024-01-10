@@ -4,12 +4,13 @@ use image::{
 
 const DEFAULT_CLUSTER_SIZE: usize = 4;
 
-#[allow(unused)]
 #[derive(Debug, PartialEq, Eq, Clone, Copy)]
 pub enum SliceType {
     Horizontal,
     Vertical,
 }
+
+#[allow(unused)]
 pub enum AveragingMethod {
     Dominant,
     Cluster,
