@@ -1,0 +1,29 @@
+syntax = "proto3";
+package palette;
+
+enum AveragingMethod {
+  DOMINANT = 0;
+  KNN = 1;
+}
+
+enum SliceType {
+  HORIZONTAL = 0;
+  VERTICAL = 1;
+}
+
+message AverageRequest {
+  AveragingMethod method = 1;
+  string image_path = 2;
+  uint32 num_sections = 3;
+  optional SliceType direction = 4;
+  optional uint32 cluster_size = 5;
+}
+
+message AverageReply {
+  bool success = 1;
+  optional string output_path = 2;
+}
+
+service ImagePalette {
+  rpc AverageColour (AverageRequest) returns (AverageReply);
+}
