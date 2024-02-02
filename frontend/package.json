@@ -1,7 +1,7 @@
 {
   "name": "frontend",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.0.0",
@@ -10,7 +10,7 @@
     "@testing-library/react": "^13.0.1",
     "@testing-library/user-event": "^14.1.0",
     "@types/jest": "^28.1.1",
-    "@types/node": "^12.0.0",
+    "@types/node": "^20.11.16",
     "@types/react": "^18.0.9",
     "@types/react-dom": "^18.0.4",
     "aws-sdk": "^2.1536.0",
@@ -20,13 +20,12 @@
     "react-dom": "^18.1.0",
     "react-icons": "^3.0.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.6.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "env-cmd -f ../.env react-scripts start",
+    "build": "env-cmd -f ../.env react-scripts build",
+    "test": "env-cmd -f ../.env react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +42,15 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "env-cmd": "^10.1.0",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.3"
   }
 }
