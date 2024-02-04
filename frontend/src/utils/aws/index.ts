@@ -31,7 +31,7 @@ export const getConfig = (): AWSConfig => {
     configCache.set(confKey, conf)
   }
 
-  return configCache.get(confKey)!
+  return configCache.get(confKey)
 }
 
 /**
