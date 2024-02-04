@@ -24,7 +24,7 @@
   },
   "scripts": {
     "start": "env-cmd -f ../.env react-scripts start",
-    "build": "env-cmd -f ../.env react-scripts build",
+    "build": "react-scripts build",
     "test": "env-cmd -f ../.env react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,7 +51,7 @@
     "prettier": "^3.2.5",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "typescript": "^5.3.3"
+    "typescript": "<5.2.0"
   },
   "overrides": {
     "nth-check": "^2.0.1",
