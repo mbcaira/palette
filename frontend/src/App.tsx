@@ -1,9 +1,13 @@
-import { ChakraProvider, theme } from '@chakra-ui/react';
-import Upload from './components/Upload';
+import { ChakraProvider, Container, theme } from '@chakra-ui/react'
+import Upload from './components/Upload'
+import Navbar from './components/Navbar'
 export const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Upload />
+      <Navbar />
+      <Container as="main" pt="10">
+        <Upload />
+      </Container>
     </ChakraProvider>
-  );
-};
+  )
+}

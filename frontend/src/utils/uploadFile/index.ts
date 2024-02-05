@@ -1,10 +1,9 @@
 import AWS from 'aws-sdk'
 import type { ManagedUpload } from 'aws-sdk/lib/s3/managed_upload'
 import { getConfig, setConfig } from '../aws'
+import { Colour } from '../types/palette.types'
 
-export const uploadFile = async (
-  file: File,
-): Promise<ManagedUpload.SendData | boolean> => {
+export const uploadFile = async (file: File): Promise<Colour[]> => {
   setConfig()
   const key = encodeURIComponent(file.name)
   const upload = new AWS.S3.ManagedUpload({
@@ -15,16 +14,19 @@ export const uploadFile = async (
     },
   })
 
+  const colours: Colour[] = []
+
   // On upload success, the UI needs to call the server with the image's path on S3 to be processed
-  let success: ManagedUpload.SendData | boolean = false
+  // Then, once a response from the server is received, send back the colour values to the frontend
   upload
     .promise()
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     .then((val: ManagedUpload.SendData) => {
-      success = val
+      colours.push({ r: 255, g: 0, b: 0, a: 1 })
     })
     .catch((err) => {
-      console.log(err)
+      console.error(err)
     })
 
-  return success
+  return colours
 }

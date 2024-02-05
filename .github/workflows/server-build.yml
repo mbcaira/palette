@@ -1,4 +1,4 @@
-name: ci
+name: server-build
 
 on:
   push:
@@ -25,10 +25,3 @@ jobs:
           file: Dockerfile-server
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:server
-      - name: Build and push client
-        uses: docker/build-push-action@v5
-        with:
-          context: .
-          file: Dockerfile-client
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:frontend
